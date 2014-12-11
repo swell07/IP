@@ -11,6 +11,7 @@ void draw() {
   //rectagle
   fill(255, 0, 0);
   rect(1, 1, 80, 50);
+  
   //house
   noFill();
   quad(100, 400, 200, 400, 240, 450, 60, 450); // four-angles
@@ -29,7 +30,7 @@ void draw() {
   noFill();//eyebrown
   arc(470, 500, 70, 90, PI+QUARTER_PI, PI+HALF_PI);
   arc(530, 500, 70, 90, PI+HALF_PI, PI+HALF_PI+QUARTER_PI);
-  arc(490, 490, 90, 90, QUARTER_PI, HALF_PI);
+  arc(490, 490, 90, 90, QUARTER_PI, HALF_PI);//mouth
   point(470, 490);
   point(530, 490);
 }
