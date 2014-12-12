@@ -1,24 +1,51 @@
- PImage a;
- PImage b;
- 
- char[] diff;
- int charO = 63;
- int diffI = 0;
- 
- char[] alpha={_,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z};
- //"YOU HAVE FOUND THE HIDEEN MESSAGE"
- 
-void setup(){
-size(640,640);
+PImage a;
+PImage b;
+int difflength = 0;
+
+char[] alphabet= { 
+  ' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+};
+
+//load images
 a = loadImage("a.png");
 b = loadImage("b.png");
+
+//first, find out the length of the message by counting the different pixels
+for (int i = 0; i < a.pixels.length; i++) { 
+  if (b.pixels[i] != a.pixels[i]) {       
+    //pixel is different, add to difflength
+    difflength = difflength + 1;
+  }
 }
 
- for (int i = 0; i < a.pixels.length; i++){
-   if (b.pixels[i]-a >0){
-     print(alpha.charAt(b.pixels[i]-a.pixels[i]);
-   }
-   
+//now use difflength to create an array which will hold the hidden message
+char[] diffarray = new char[difflength];
+
+//reset difflength so we can reuse it as index
+difflength = 0;
+
+for (int i = 0; i < a.pixels.length; i++) {
+ 
+  if (b.pixels[i] != a.pixels[i]) {       
+    
+    /*
+    * use the difference between a and b to get the letter from the alphabet array
+    * for some reason the difference is shifted 1 index too far, so that's why the -1 is needed
+    * the abs() is used to make sure the number is positive (unsigned)
+    */
+    diffarray[difflength] = alphabet[abs(a.pixels[i] - b.pixels[i]) - 1]; 
+    
+    //add to the index, so the letters of the hidden message end up next to each other
+    difflength++;
+  }
+}
+
+//create message string using the char array we just set up
+String message = new String(diffarray);
+
+//print it
+println("The message is: " + message);
+
    
 
 //char[] converts numbers to alphabet directly
