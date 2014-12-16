@@ -1,21 +1,21 @@
 //arrays
-int cols = 5; //x
 int rows = 4; //y
-Spaceship [][] s = new Spaceship[cols][rows];
+int cols = 5; //x
+Spaceship [][] s = new Spaceship[rows][cols]; //2d arrays "grid[y][x]"
 
 void setup() {
   size(600, 600);
-  for (int i = 0; i < cols; i++) {
-    for (int j = 0; j < rows; j++) {
-      s[i][j] = new Spaceship(i * 100, j * 100, true);
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
+      s[i][j] = new Spaceship(j * 100, i * 100, true);
     }
   }
 }
 
 void draw() {
   background(255);
-  for (int i = 0; i < cols; i++) {
-    for (int j = 0; j < rows; j++) {
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
       if (s[i][j].visible) {
         s[i][j].display();
       }
@@ -24,9 +24,9 @@ void draw() {
 }
 
 void mouseClicked() {
-  for (int i = 0; i < cols; i++) {
-    for (int j = 0; j < rows; j++) {
-      if ((mouseX > i * 100 + 50) && (mouseX < i * 100 +150) && (mouseY > j * 100 + 100) && (mouseY < j * 100 + 200)) {
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols; j++) {
+      if ((mouseX > j * 100 + 50) && (mouseX < j * 100 +150) && (mouseY > i * 100 + 100) && (mouseY < i * 100 + 200)) {
         s[i][j].visible = false;
       }
     }
