@@ -25,3 +25,20 @@ void movement() {
     }
   }
 }
+
+
+//
+void keyPressed() {
+  if (keyCode == UP) keyup = true; 
+  if (keyCode == DOWN) keydown = true; 
+  if (keyCode == LEFT) keyleft = true; 
+  if (keyCode == RIGHT) keyright = true;
+}
+
+void keyReleased() {
+  if (keyCode == UP) keyup = false; 
+  if (keyCode == DOWN) keydown = false; 
+  if (keyCode == LEFT) keyleft = false; 
+  if (keyCode == RIGHT) keyright = false;
+}
+
